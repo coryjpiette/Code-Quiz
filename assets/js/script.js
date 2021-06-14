@@ -12,3 +12,6 @@ let timerReset;
 
 let answers = document.querySelectorAll('#quizTaker button')
 
+let scoreArray = {};
+
+(localStorage.getItem('scoreArray')) ? scoreArray = JSON.parse(localStorage.getItem('scoreArray')):scoreArray=[];

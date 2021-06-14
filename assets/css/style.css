@@ -1,3 +1,14 @@
+html.body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+}
+
+#highScores div div{
+    padding:10px;
+    font-weight: 500px;
+}
+
+
 #contentPosition {
     display: flex;
     flex-direction:column;
@@ -32,9 +43,11 @@
   }
   #answerOptions button:hover{
       background-color: rgb(43, 86, 226);
-  }
 
-  .removeAnswerOptions {
+  }
+ 
+
+  .hide {
       display: none;
   }
   .removeScore {
