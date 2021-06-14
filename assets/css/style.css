@@ -18,4 +18,11 @@
       color:white;
       cursor:pointer;
       display:block;
+      text-align: center;
+      margin: 5px 0;
+      padding: 5px 5px;
+      width: 100%;
+  }
+  #answerOptions button:hover{
+      background-color: rgb(43, 86, 226);
   }
