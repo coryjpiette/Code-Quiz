@@ -8,3 +8,14 @@
   #setParameters {
       background-color: rgb(43, 153, 226);
   }
+
+  #answerOptions {
+      font-weight: 600;
+  }
+
+  #answerOptions button {
+      background-color:  rgb(43, 153, 226);
+      color:white;
+      cursor:pointer;
+      display:block;
+  }
