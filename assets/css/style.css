@@ -1,0 +1,10 @@
+#quizIntro{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    min-height: calc(100% - 110px)
+  }
+  
+  #setParameters {
+      background-color: rgb(43, 153, 226);
+  }
