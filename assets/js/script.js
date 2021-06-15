@@ -1,16 +1,11 @@
 
-
 document.addEventListener('DOMContentLoaded', (event) => {
     const timerStart = 75;
     
     let timer = 75;
-    
     let score = 0;
-    
     let questionNumber = 0;
-    
     let setTimer;
-    
     let answers = document.querySelectorAll('#answerOptions button')
     
     let scoreArray = {};
@@ -29,7 +24,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             userItem.classList.remove('hide');
     
         });
-        //queryElement(element.classList).add('hide');//
+        //queryElement(element.classList).remove('hide');
     }
     
     let clearScores = () => {
@@ -41,7 +36,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             var scores = document.createElement("div")
             scores.innerHTML = i + "." + check.firstScore + "-" + check.score;
             queryElement('#highScores div').appendChild(scores);
-            i = 1 + 1
+            i = i + 1
         });
     
         i = 0;
@@ -54,24 +49,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let startQuestions = () => {
     
         queryElement('#answerOptions p').innerHTML = questions[questionNumber].answerText;
-         queryElement('#answerOptions button:nth-of-type(1)').innerHTML = `1. ${questions[questionNumber].choices[0]}`;
+        queryElement('#answerOptions button:nth-of-type(1)').innerHTML = `1. ${questions[questionNumber].choices[0]}`;
         queryElement('#answerOptions button:nth-of-type(2)').innerHTML = `2. ${questions[questionNumber].choices[1]}`;
-    queryElement('#answerOptions button:nth-of-type(3)').innerHTML = `3. ${questions[questionNumber].choices[2]}`;
+        queryElement('#answerOptions button:nth-of-type(3)').innerHTML = `3. ${questions[questionNumber].choices[2]}`;
         queryElement('#answerOptions button:nth-of-type(4)').innerHTML = `4. ${questions[questionNumber].choices[3]}`;
-    
     
     }
     
     let quizAnswer = (answerUpdate) => {
         queryElement('#currentScore p').innerHTML = answerUpdate;
-        queryElement('#currentScore p').classList.remove('remove',currentScore());
-        Array.from(answers).forEach(answer => {
+        queryElement('#currentScore').classList.remove('remove',currentScore());
+        Array.from(answers).forEach(answer => 
+            {
     
             answer.classList.add('disablePointer');
         });
     
     setTimeout(() => {
-        if(questionNumber ===questions.length) {
+        if(questionNumber === questions.length) {
             showSection('#completeQuiz');
             timer = 0;
             queryElement('#time').innerHTML = timer;
@@ -92,7 +87,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             queryElement('#time').innerHTML=timer;
         }else {
     clearInterval(countdown)
-            queryElement('#scoreList').innerHTML=score;
+            queryElement('#finalScore').innerHTML=score;
             showSection("#completeQuiz")
         }
     }
@@ -102,7 +97,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let countdown;
     queryElement("#quizIntro button").addEventListener("click", (e) => {
         startQuestions();
-        showSection("answerOptions");
+        showSection("#answerOptions");
         countdown=setInterval(quizTimer, 1000);
          
     });
@@ -118,8 +113,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     
     Array.from(answers).forEach(check => {
         check.addEventListener('click', function (event) {
-            if (this.innerHTML.substring(3,this.length) ===questions[questionNumber].answer)
-            {score = score+1;
+            if (this.innerHTML.substring(3,this.length) === questions[questionNumber].answer)
+            {score = score + 1;
                 questionNumber = questionNumber +1;
                 quizAnswer("Correct!");
             }else {
@@ -160,7 +155,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     
         localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
             queryElement('#highScores div').innerHTML = '';
-            onlyDisplaySection("#highScores");
+            showSection("#highScores");
                  clearScores();
             queryElement("#initials").value = '';
         }
