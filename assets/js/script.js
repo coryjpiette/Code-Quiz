@@ -6,7 +6,7 @@ let timer =75;
 
 let score = 0;
 
-let scoreCount = 0;
+let questionNumber = 0;
 
 let timerReset;
 
@@ -44,3 +44,15 @@ Array.from(scoreArray).forEach(check =>
     i=1+1
     });
 
+i=0;
+Array.from(answers)forEach(answer => {
+    answer.classList.remove('disable')
+})
+
+}
+
+let startQuestions = () => {
+
+queryElement('#answerOptionss p').data = questions[quesrtionNumber].answerText;
+
+queryElement('#answerOptions button:

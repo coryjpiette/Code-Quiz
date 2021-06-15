@@ -8,6 +8,14 @@ html.body {
     font-weight: 500px;
 }
 
+#highScores div div:nth-child(odd){
+    background-color: white
+  }
+  
+  #highScores button{
+    margin:5px 0;
+  }
+  
 
 #contentPosition {
     display: flex;
@@ -15,6 +23,11 @@ html.body {
     justify-content: center;
     min-height:auto;
    
+}
+
+section {
+    max-width: 75% ;
+    margin: 0 auto;
 }
 
 #quizIntro {
@@ -27,6 +40,45 @@ html.body {
       
   }
 
+
+  #stats{
+    max-width:992px;
+    margin: 0 auto;
+    color: white;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+  
+  #scoreList {
+  
+    left:40px;
+    background-color: #4b8dc2;
+    color: white;
+  }
+  
+#scoreList button:hover{
+    background-color: rgb(84, 101, 156);
+}
+
+  button{
+    background-color:  #4b8dc2;
+    color:white;
+    border: none;
+    cursor:pointer;
+    padding:5px;
+    border-radius: 5px;
+    
+  }
+  
+
+  #quizIntro button:hover{
+    background-color: rgb(84, 101, 156);
+  }
+  
   #answerOptions #answerText {
       font-weight: 600;
   }
@@ -47,9 +99,18 @@ html.body {
   }
  
 
+
+
+
+
   .hide {
       display: none;
   }
   .removeScore {
       visibility: hidden;
   }
+
+  .disable{
+    pointer-events:none;
+    }
+    
