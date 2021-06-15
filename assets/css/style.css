@@ -1,7 +1,10 @@
-html,body{
-  font-family: 'Roboto', sans-serif;
+html.body{
+  font-family: sans-serif;
   height:100%;
 }
+
+
+
 #highScores div div{
   padding: 5px;
   font-weight:600;
