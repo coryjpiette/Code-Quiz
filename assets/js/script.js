@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         Array.from(scoreArray).forEach(check => {
     
             var scores = document.createElement("div")
-            scores.innerHTML = i + "." + check.firstScore + "-" + check.score;
+            scores.innerHTML = i + ". " + check.firstScore + "  (score:" + check.score+")";
             queryElement('#highScores div').appendChild(scores);
             i = i + 1
         });
@@ -161,8 +161,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
     
-    queryElement("#startOver").addEventListener("click", () => {
-        recordsArray = [];
+    queryElement("#removeScores").addEventListener("click", () => {
+        scoreArray = [];
         queryElement('#highScores div').innerHTML = "";
         localStorage.removeItem('scoreArray');
     });
