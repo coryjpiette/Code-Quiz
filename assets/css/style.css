@@ -103,19 +103,37 @@ section {
 
   }
  
+#currentScore {
+  border-top: 1px solid #999;
+  color: #41275e;
+  font-size: 1.3em;
+  margin: 0;
+  font-style: italic;
+  font-weight:700;
+  margin: 10px auto;
 
+}
 
+#currentScore p, #badInput p {
+  margin-top: 15px;
+  margin: 0;
+}
 
-
+#topScores input, #topScores button {
+  margin-top:10px;
+}
 
   .hide {
       display: none;
   }
-  .removeScore {
+  .remove {
       visibility: hidden;
   }
 
-  .disable{
+  .disablePointer{
     pointer-events:none;
     }
     
+    #completeQuiz, #topScores {
+      display:flec;
+    }

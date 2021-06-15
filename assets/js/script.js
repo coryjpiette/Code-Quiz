@@ -45,7 +45,7 @@ let clearRecords = () => {
 
     i = 0;
     Array.from(answers)forEach(answer => {
-        answer.classList.remove('disable')
+        answer.classList.remove('disablePointer')
     })
 
 }
