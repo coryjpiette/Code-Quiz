@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     
     
         Array.from(sections).forEach((userItem) => {
-            userItem.classList.remove('hide');
+            userItem.classList.add('hide');
     
         });
-        //queryElement(element.classList).remove('hide');
+        queryElement(element).classList.remove('hide');
     }
     
     let clearScores = () => {
