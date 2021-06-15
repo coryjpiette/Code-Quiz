@@ -9,7 +9,7 @@ html.body {
 }
 
 #highScores div div:nth-child(odd){
-    background-color: white
+    background-color: white;
   }
   
   #highScores button{
@@ -58,6 +58,11 @@ section {
     left:40px;
     background-color: #4b8dc2;
     color: white;
+  }
+  
+  #timer{
+  
+    right:50px;
   }
   
 #scoreList button:hover{
