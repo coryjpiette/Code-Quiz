@@ -31,7 +31,7 @@ let showSection = (element) => {
     queryElement(element).classList.remove('hide');
 }
 
-let clearRecords = () => {
+let clearScores = () => {
     queryElement('#highScores" div').data = "";
     var i = 1;
     scoreArray.sort((a, b) => b.score - a.score);
@@ -88,7 +88,7 @@ let quizTimer = () => {
     if (timer >0)
     {
         timer=timer-1;
-        queryElement('#timer').data=timer;
+        queryElement('#time').data=timer;
 clearInterval(countdown)
         queryElement('#finalScore').data=score;
         onlyDisplaySection("#completeQuiz")
@@ -127,8 +127,8 @@ Array.from(answers).forEach(check => {
 });
 
 let badInput = () => {
-    clearTimeout(setTime);
-    setTime = setTimeout(() => {
+    clearTimeout(timerReset);
+    timerReset = setTimeout(() => {
         queryElement('#badInput').classList.add('remove');
     }, 3000);
 }
@@ -153,7 +153,37 @@ queryElement("#topScores button").addEventListener("click", () => {
             "score": score
         });
 
+    localStorage.setItem('scoreArray', JSON.stringify(scoreArray));
+        queryElement('#highScores div').innerHTML = '';
+        onlyDisplaySection("#highScores");
+             clearScores();
+        queryElement("#initials").value = '';
+    }
+});
 
+queryElement("#startOver").addEventListener("click", () => {
+    recordsArray = [];
+    queryElement('#highScores div').innerHTML = "";
+    localStorage.removeItem('scoreArray');
+});
+
+queryElement("#startOver").addEventListener("click", () => {
+    timer = timerStart;
+    score = 0;
+    questionNumber = 0;
+    onlyDisplaySection("#quizIntro");
+});
+
+queryElement("#scoreList").addEventListener("click", (e) => {
+    e.preventDefault();
+    clearInterval(countdown);
+    queryElement('#time').data = 0;
+    questionNumber = 0;
+    timer = timerStart;
+    score = 0;
+   onlyDisplaySection("#highScores");
+    clearScores();
+});
 
 
 })

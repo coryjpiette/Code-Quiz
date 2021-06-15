@@ -127,7 +127,7 @@ section {
   margin-left:10px;
 }
   #completeQuiz, #topScores {
-    display:flec;
+    display:flex;
   
 }
   .hide {
@@ -141,5 +141,34 @@ section {
     pointer-events:none;
     }
     
-   
-   
+
+
+
+  @media only screen and (min-width: 768px) {
+
+  #contentPosition{
+    min-height: calc(100% - 82px)
+  }
+
+  #completeQuiz #topScores{
+    display:flex;
+    align-items: center;
+  }
+
+  #completeQuiz #topScores input, #completeQuiz #topScores button{
+    margin-left:10px;
+  }
+
+  #stats{
+    flex-direction:row;
+  }
+
+  #answerOptions{
+    min-width:420px;
+  }
+
+  #answerOptions ol{
+    min-width:100%;
+  }
+
+}
