@@ -1,6 +1,6 @@
 
-
-var timerStart = 75;
+document.addEventListener('DOMCOntentLoaded', (event) => {
+const timerStart = 75;
 
 let timer = 75;
 
@@ -44,7 +44,7 @@ let clearRecords = () => {
     });
 
     i = 0;
-    Array.from(answers)forEach(answer => {
+    Array.from(answers).forEach(answer => {
         answer.classList.remove('disablePointer')
     })
 
@@ -52,6 +52,44 @@ let clearRecords = () => {
 
 let startQuestions = () => {
 
-    queryElement('#answerOptionss p').data = questions[quesrtionNumber].answerText;
+    queryElement('#answerOptionss p').data = questions[questionNumber].answerText;
+     queryElement('#quizHolder button:nth-of-type(1)').data = `1. ${questions[questionNumber].choices[0]}`;
+    queryElement('#quizHolder button:nth-of-type(2)').data = `2. ${questions[questionNumber].choices[1]}`;
+queryElement('#quizHolder button:nth-of-type(3)').data = `3. ${questions[questionNumber].choices[2]}`;
+    queryElement('#quizHolder button:nth-of-type(4)').data = `4. ${questions[questionNumber].choices[3]}`;
 
-    queryElement('#answerOptions button:
+
+}
+
+let quizAnswer = (answerUpdate) => {
+    queryElement('#currentScore p').data = answerUpdate;
+    queryElement('#currentScore p').classList.remove('remove',currentScore());
+    Array.from(answers).forEach(answer => {
+
+        answer.classList.add('disablePointer');
+    });
+
+setTimeout(() => {
+    if(questionNumber ===questions.length) {
+        onlyDisplaySection('#completeQuiz');
+        time = 0;
+        queryElement('#timer').data = timer;
+        } else [
+            startQuestions();
+            Array.from(answers).forEach(answer => {
+                answer.classList.remove('disablePointer');
+            })
+}, 1000);
+
+}
+
+let quizTimer = () => {
+    if (timer >0)
+    {
+        timer=timer-1;
+        queryElement('#score').data=score;
+        onlyDisplaySection("#completeQuiz")
+    }
+}
+
+}
