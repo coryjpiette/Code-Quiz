@@ -8,7 +8,7 @@ let score = 0;
 
 let questionNumber = 0;
 
-let timerReset;
+let setTimer;
 
 let answers = document.querySelectorAll('#answerOptions button')
 
@@ -24,21 +24,21 @@ let showSection = (element) => {
     let sections = document.querySelectorAll("section")
 
 
-    Array.from(sections).forEach((userInput) => {
-        userInput.classList.remove('hide');
+    Array.from(sections).forEach((userItem) => {
+        userItem.classList.remove('hide');
 
     });
-    queryElement(element).classList.remove('hide');
+    //queryElement(element.classList).add('hide');//
 }
 
 let clearScores = () => {
-    queryElement('#highScores" div').data = "";
+    queryElement('#highScores div').innerHTML = "";
     var i = 1;
     scoreArray.sort((a, b) => b.score - a.score);
     Array.from(scoreArray).forEach(check => {
 
         var scores = document.createElement("div")
-        scores.data = i + "." + check.firstScore + "-" + check.score;
+        scores.innerHTML = i + "." + check.firstScore + "-" + check.score;
         queryElement('#highScores div').appendChild(scores);
         i = 1 + 1
     });
@@ -52,17 +52,17 @@ let clearScores = () => {
 
 let startQuestions = () => {
 
-    queryElement('#answerOptions p').data = questions[questionNumber].answerText;
-     queryElement('#answerOptions button:nth-of-type(1)').data = `1. ${questions[questionNumber].choices[0]}`;
-    queryElement('#answerOptions button:nth-of-type(2)').data = `2. ${questions[questionNumber].choices[1]}`;
-queryElement('#answerOptions button:nth-of-type(3)').data = `3. ${questions[questionNumber].choices[2]}`;
-    queryElement('#anwserOptions button:nth-of-type(4)').data = `4. ${questions[questionNumber].choices[3]}`;
+    queryElement('#answerOptions p').innerHTML = questions[questionNumber].answerText;
+     queryElement('#answerOptions button:nth-of-type(1)').innerHTML = `1. ${questions[questionNumber].choices[0]}`;
+    queryElement('#answerOptions button:nth-of-type(2)').innerHTML = `2. ${questions[questionNumber].choices[1]}`;
+queryElement('#answerOptions button:nth-of-type(3)').innerHTML = `3. ${questions[questionNumber].choices[2]}`;
+    queryElement('#answerOptions button:nth-of-type(4)').innerHTML = `4. ${questions[questionNumber].choices[3]}`;
 
 
 }
 
 let quizAnswer = (answerUpdate) => {
-    queryElement('#currentScore p').data = answerUpdate;
+    queryElement('#currentScore p').innerHTML = answerUpdate;
     queryElement('#currentScore p').classList.remove('remove',currentScore());
     Array.from(answers).forEach(answer => {
 
@@ -71,9 +71,9 @@ let quizAnswer = (answerUpdate) => {
 
 setTimeout(() => {
     if(questionNumber ===questions.length) {
-        onlyDisplaySection('#completeQuiz');
-        time = 0;
-        queryElement('#timer').data = timer;
+        showSection('#completeQuiz');
+        timer = 0;
+        queryElement('#time').innerHTML = timer;
         } else {
             startQuestions();
             Array.from(answers).forEach(answer => {
@@ -88,32 +88,36 @@ let quizTimer = () => {
     if (timer >0)
     {
         timer=timer-1;
-        queryElement('#time').data=timer;
+        queryElement('#time').innerHTML=timer;
+    }else {
 clearInterval(countdown)
-        queryElement('#finalScore').data=score;
-        onlyDisplaySection("#completeQuiz")
+        queryElement('#scoreList').innerHTML=score;
+        showSection("#completeQuiz")
     }
 }
+
+//Starting quiz and countdown
 
 let countdown;
 queryElement("#quizIntro button").addEventListener("click", (e) => {
     startQuestions();
-    onlyDisplaySection("answerOptions");
-    countdown=setInterval(quizTimer,1000);
+    showSection("answerOptions");
+    countdown=setInterval(quizTimer, 1000);
      
 });
 
 let currentScore = () => {
-    clearTimeout(setTime)
-    setTime = setTimeout(() => {
+    clearTimeout(setTimer)
+    setTimer = setTimeout(() => {
         queryElement('#currentScore').classList.add('remove');
     },1000)
  
 }
 
+
 Array.from(answers).forEach(check => {
     check.addEventListener('click', function (event) {
-        if (this.data.substring(3,this.length) ===questions[questionNumber].answer)
+        if (this.innerHTML.substring(3,this.length) ===questions[questionNumber].answer)
         {score = score+1;
             questionNumber = questionNumber +1;
             quizAnswer("Correct!");
@@ -127,8 +131,8 @@ Array.from(answers).forEach(check => {
 });
 
 let badInput = () => {
-    clearTimeout(timerReset);
-    timerReset = setTimeout(() => {
+    clearTimeout(setTimer);
+    setTimer = setTimeout(() => {
         queryElement('#badInput').classList.add('remove');
     }, 3000);
 }
@@ -137,14 +141,14 @@ queryElement("#topScores button").addEventListener("click", () => {
 
     let addInitials = queryElement('#initials').value;
     if (addInitials === ''){
-    queryElement('#badInput p').data = "You need at least 1 character";
+    queryElement('#badInput p').innerHTML = "You need at least 1 character";
 
         queryElement('#badInput').classList.remove('remove', badInput());
-    } else if (addInitials.match(/[[A-Za-z]/) === null) {
-        queryElement('#badInput p').data = "Only letters for initials allowed.";
+    } else if (addInitials.match("^[A-Za-z]") === null) {
+        queryElement('#badInput p').innerHTML = "Only letters for initials allowed.";
         queryElement('#badInput').classList.remove('remove', badInput());
     } else if (addInitials.length > 5) {
-        queryElement('#badInput p').data = "Maximum of 5 characters allowed.";
+        queryElement('#badInput p').innerHTML = "Maximum of 5 characters allowed.";
         queryElement('#badInput').classList.remove('remove', badInput());
     } else {
 
@@ -171,17 +175,17 @@ queryElement("#startOver").addEventListener("click", () => {
     timer = timerStart;
     score = 0;
     questionNumber = 0;
-    onlyDisplaySection("#quizIntro");
+    showSection("#quizIntro");
 });
 
 queryElement("#scoreList").addEventListener("click", (e) => {
     e.preventDefault();
     clearInterval(countdown);
-    queryElement('#time').data = 0;
+    queryElement('#time').innerHTML = 0;
     questionNumber = 0;
     timer = timerStart;
     score = 0;
-   onlyDisplaySection("#highScores");
+   showSection("#highScores");
     clearScores();
 });
 

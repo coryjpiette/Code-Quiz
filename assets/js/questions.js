@@ -2,7 +2,7 @@
 var questions = [
 
   {
-    answerTex: "Commonly used data types DO NOT include __________.",
+    answerText: "Commonly used data types DO NOT include __________.",
     choices: ["strings", "booleans", "alerts", "numbers"],
     answer: "alerts"
   },
