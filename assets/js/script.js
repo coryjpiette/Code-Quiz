@@ -34,7 +34,7 @@ let showSection = (element) => {
 let clearRecords = () => {
     queryElement('#highScores" div').data = "";
     var i = 1;
-    scoreArray.sort((a, b) = b.score - a.score);
+    scoreArray.sort((a, b) => b.score - a.score);
     Array.from(scoreArray).forEach(check => {
 
         var scores = document.createElement("div")
@@ -52,7 +52,7 @@ let clearRecords = () => {
 
 let startQuestions = () => {
 
-    queryElement('#answerOptionss p').data = questions[questionNumber].answerText;
+    queryElement('#answerOptions p').data = questions[questionNumber].answerText;
      queryElement('#quizHolder button:nth-of-type(1)').data = `1. ${questions[questionNumber].choices[0]}`;
     queryElement('#quizHolder button:nth-of-type(2)').data = `2. ${questions[questionNumber].choices[1]}`;
 queryElement('#quizHolder button:nth-of-type(3)').data = `3. ${questions[questionNumber].choices[2]}`;
@@ -74,11 +74,12 @@ setTimeout(() => {
         onlyDisplaySection('#completeQuiz');
         time = 0;
         queryElement('#timer').data = timer;
-        } else [
+        } else {
             startQuestions();
             Array.from(answers).forEach(answer => {
                 answer.classList.remove('disablePointer');
             })
+        }
 }, 1000);
 
 }
@@ -87,9 +88,72 @@ let quizTimer = () => {
     if (timer >0)
     {
         timer=timer-1;
-        queryElement('#score').data=score;
+        queryElement('#timer').data=timer;
+clearInterval(countdown)
+        queryElement('#finalScore').data=score;
         onlyDisplaySection("#completeQuiz")
     }
 }
 
+let countdown;
+queryElement("#quizIntro button").addEventListerner("click", (e) => {
+    startQuestiond();
+    onlyDisplaySection("answerOptions");
+    countdown=setInterval(quizTimer,1000);
+     
+});
+
+let currentScore = () => {
+    clearTimeout(setTime)
+    setTime = setTimeout(() => {
+        queryElement('#currentScore').classList.add('remove');
+    },1000)
+ 
 }
+
+Array.from(answers).forEach(check => {
+    check.addEventListener('click', function (event) {
+        if (this.data.substring(3,this.length) ===questions[questionNumber].answer)
+        {score = score+1;
+            questionNumber = questionNumber +1;
+            quizAnswer("Correct!");
+        }else {
+            timer = timer -10;
+            questionNumber = questionNumber +1;
+            quizAnswer("Wrong!");
+        }
+
+    })
+});
+
+let badInput = () => {
+    clearTimeout(setTime);
+    setTime = setTimeout(() => {
+        queryElement('#badInput').classList.add('remove');
+    }, 3000);
+}
+
+queryElement("#topScores button").addEventListener("click", () => {
+
+    let addInitials = queryElement('#initials').value;
+    if (addInitials === ''){
+    queryElement('#badInput p').data = "You need at least 1 character";
+
+        queryElement('#badInput').classList.remove('remove', badInput());
+    } else if (addInitials.match(/[[A-Za-z]/) === null) {
+        queryElement('#badInput p').data = "Only letters for initials allowed.";
+        queryElement('#badInput').classList.remove('remove', badInput());
+    } else if (addInitials.length > 5) {
+        queryElement('#badInput p').data = "Maximum of 5 characters allowed.";
+        queryElement('#badInput').classList.remove('remove', badInput());
+    } else {
+
+        scoreArray.push({
+            "firstScore": addInitials,
+            "score": score
+        });
+
+
+
+
+})
