@@ -30,11 +30,9 @@
         <section id="quizIntro">
             <h1>Coding Quiz Challenge</h1>
 
-
             <p>
                 Try to answer the following code-related questions within the time limit.
                 Keep in mind that incorrect answers will penalize your time by ten seconds.
-
             </p>
             <button>Start Quiz!</button>
         </section>
@@ -47,7 +45,7 @@
             <button></button>
             <button></button>
             <button></button>
-            <div id="currentScore" class="removeScore">
+            <div id="currentScore" class="remove">
                 <p>
                     &nbsp;
                 </p>
@@ -57,9 +55,24 @@
         <section id="Finish" class="hide">
             <h1>All Done!</h1>
             <p>Your final score is&nbsp;<span id="finalScore"></span></p>
+            <div id=topScores>
+                <p>Enter initials: </p>
+                <input id="initials" type="text">
+                </button>Submit</button>
+</div>
+<div id = "badInput" class = "remove">
+    <p>&nbsp</p>
+</div>
 
         </section>
+        <section id = "highScores" class = "hide">
+            <h1>High Scores</h1>
     </div>
+    <div>
+        <button id ="startOver">Go bacl</button>
+        <button id = "removeScores"></button>Clear High Scores<button>
+            </section>
+        </div>
 </body>
 
 </html>
