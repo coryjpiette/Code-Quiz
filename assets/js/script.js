@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMCOntentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', (event) => {
 const timerStart = 75;
 
 let timer = 75;
@@ -53,10 +53,10 @@ let clearScores = () => {
 let startQuestions = () => {
 
     queryElement('#answerOptions p').data = questions[questionNumber].answerText;
-     queryElement('#quizHolder button:nth-of-type(1)').data = `1. ${questions[questionNumber].choices[0]}`;
-    queryElement('#quizHolder button:nth-of-type(2)').data = `2. ${questions[questionNumber].choices[1]}`;
-queryElement('#quizHolder button:nth-of-type(3)').data = `3. ${questions[questionNumber].choices[2]}`;
-    queryElement('#quizHolder button:nth-of-type(4)').data = `4. ${questions[questionNumber].choices[3]}`;
+     queryElement('#answerOptions button:nth-of-type(1)').data = `1. ${questions[questionNumber].choices[0]}`;
+    queryElement('#answerOptions button:nth-of-type(2)').data = `2. ${questions[questionNumber].choices[1]}`;
+queryElement('#answerOptions button:nth-of-type(3)').data = `3. ${questions[questionNumber].choices[2]}`;
+    queryElement('#anwserOptions button:nth-of-type(4)').data = `4. ${questions[questionNumber].choices[3]}`;
 
 
 }
@@ -96,8 +96,8 @@ clearInterval(countdown)
 }
 
 let countdown;
-queryElement("#quizIntro button").addEventListerner("click", (e) => {
-    startQuestiond();
+queryElement("#quizIntro button").addEventListener("click", (e) => {
+    startQuestions();
     onlyDisplaySection("answerOptions");
     countdown=setInterval(quizTimer,1000);
      
@@ -185,5 +185,4 @@ queryElement("#scoreList").addEventListener("click", (e) => {
     clearScores();
 });
 
-
-})
+});
