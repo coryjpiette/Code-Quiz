@@ -121,13 +121,11 @@ background-color: rgb(84, 101, 156) ;
   }
  
 #currentScore, #badInput {
-  border-top: 1px solid #999;
-  color: #41275e;
-  font-size: 1.3em;
-  margin: 0;
+  color: rgb(43, 86, 226);
+  font-size: 1.5em;
   font-style: italic;
-  font-weight:700;
-  margin: 10px auto;
+  font-weight:1000;
+  margin: 5px;
 
 }
 
