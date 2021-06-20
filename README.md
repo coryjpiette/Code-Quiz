@@ -16,3 +16,7 @@ Once you have finished the quiz, please submit your initials to record your scor
 Good luck!
 
 Play the quiz at: https://coryjpiette.github.io/HW-4-Code-Quiz/
+
+Quiz screenshot:
+
+![image](https://user-images.githubusercontent.com/60293516/122679451-e6b8f200-d1b8-11eb-92f3-732872d4eade.png)
