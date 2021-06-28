@@ -1,4 +1,4 @@
-Code-Quiz
+Coding Quiz
 
 This project involves developing a five-question quiz on basic coding concepts.
 
