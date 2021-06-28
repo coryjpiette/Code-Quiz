@@ -1,7 +1,6 @@
 Code-Quiz
-Code Quiz
 
-This homework assignment involves developing a five-question quiz on basic coding concepts.
+This project involves developing a five-question quiz on basic coding concepts.
 
 At the onset, you are provided with the choice to either begin the quiz or view the high scores.
 
