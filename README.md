@@ -1,5 +1,5 @@
-# HW-4-Code-Quiz
-Homework #4 - Code Quiz
+Code-Quiz
+Code Quiz
 
 This homework assignment involves developing a five-question quiz on basic coding concepts.
 
